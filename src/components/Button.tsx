@@ -1,13 +1,15 @@
-import React from 'react';
-type ButtonType = {
+import s from './Button.module.css'
+type PropsButton = {
     name: string
-    callback: () => void
+    callBack: () => void
+    error?: null| string
+
 }
-export const Button = (props: ButtonType) => {
-    const onClickButtonHandler = () => {
-        props.callback()
+export const Button = (props: PropsButton) => {
+    const onClickHandler = () => {
+        props.callBack()
     }
     return (
-        <button onClick={onClickButtonHandler}>{props.name}</button>
+        <button className={props.error? s.buttonActive: ""} onClick={onClickHandler}>{props.name}</button>
     )
 }
